@@ -1,0 +1,206 @@
+* {
+	scroll-behavior: smooth;
+	box-sizing: border-box;
+	font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* ===== Scrollbar CSS ===== */
+/* Firefox */
+* {
+	scrollbar-width: thin;
+	scrollbar-color: #61dafb #282c34;
+}
+
+/* Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+	width: 14px;
+}
+
+*::-webkit-scrollbar-track {
+	background: #282c34;
+}
+
+*::-webkit-scrollbar-thumb {
+	background-color: #61dafb;
+	border-radius: 10px;
+	border: 4px solid #282c34;
+}
+
+body {
+	padding: 0;
+	margin: 0;
+}
+
+#app {
+	background-color: #282c34;
+	min-height: 100vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	color: white;
+	font-size: calc(10px + 2vmin);
+}
+
+main {
+	padding: 0.75rem;
+	border: 4px solid #61dafb;
+	border-radius: 0.75rem;
+
+	height: 600px;
+	width: min(100%, 600px);
+
+	display: flex;
+	flex-direction: column;
+	gap: 1.25rem;
+}
+
+h1 {
+	text-align: center;
+	margin: 0;
+}
+
+#todoList {
+	display: flex;
+	flex-direction: column;
+	flex-grow: 1;
+	gap: 1.75rem;
+
+	padding: 0;
+	margin: 0;
+	list-style: none;
+	overflow: auto;
+}
+
+.todoListItem {
+	display: flex;
+	flex-direction: row;
+	gap: 0.75rem;
+	padding-inline: 0.25rem;
+
+	position: relative;
+}
+
+.todoListItem:not(:last-child)::after {
+	position: absolute;
+	content: "";
+
+	width: 100%;
+	height: 1px;
+
+	bottom: -0.9rem;
+	left: 0;
+
+	background-color: #61dafb80;
+}
+
+.todoListItem > input[type="checkbox"] {
+	margin: auto 0.25rem;
+}
+
+.todoListItem > span {
+	flex-grow: 1;
+
+	display: grid;
+	place-items: stretch;
+	place-content: stretch;
+}
+
+.todoListItem > input[type="checkbox"]:checked ~ span {
+	text-decoration: line-through;
+	filter: brightness(40%);
+}
+
+.todoListItem > span > textarea.hide {
+	display: none !important;
+}
+
+.todoListItem > span > textarea {
+	display: inherit;
+	padding: 0;
+	background-color: transparent;
+	color: inherit;
+	font: inherit;
+	border: none;
+	resize: none;
+	outline: none;
+
+	width: 100%;
+	margin-inline: auto;
+}
+
+.todoListItem > span > textarea:focus {
+	box-sizing: content-box;
+	border-bottom: 4px solid #61dafb;
+	animation: widthZeroToHero 0.1s ease-in-out;
+}
+
+.todoListItem > button {
+	align-self: center;
+	background-color: #db2222;
+	padding: 0;
+	border: 1px solid #fb6161;
+	border-radius: 0.25rem;
+
+	color: white;
+	font-size: calc(10px + 2vmin);
+
+	aspect-ratio: 1;
+	height: 1.75rem;
+	width: auto;
+
+	opacity: 0%;
+
+	transition: all 0.3s ease-in-out;
+}
+
+.todoListItem:hover > button {
+	opacity: 100% !important;
+}
+
+.todoListItem > button:hover {
+	background-color: #b60707;
+}
+
+.todoListItem > button:active {
+	background-color: #910b0b;
+}
+
+.todoListItem > button:focus {
+	outline: 4px solid #b6070780;
+}
+
+#addTodo {
+	background-color: #22dbd2;
+	padding: 0.5rem;
+	border: 1px solid #61f6fb;
+	border-radius: 0.25rem;
+
+	color: white;
+	text-shadow: 0px 0px 12 px black;
+	font-size: calc(10px + 1.25vmin);
+	transition: all 0.3s ease-in-out;
+}
+
+#addTodo:hover {
+	background-color: #07b6b6;
+}
+#addTodo:active {
+	background-color: #0b918a;
+}
+
+#addTodo:focus {
+	outline: 4px solid #07b0b680;
+}
+
+.done {
+	text-decoration: line-through;
+}
+
+@keyframes widthZeroToHero {
+	0% {
+		width: 0;
+	}
+	100% {
+		width: 100%;
+	}
+}
